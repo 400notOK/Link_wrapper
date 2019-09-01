@@ -5,10 +5,6 @@ from dotenv import load_dotenv
 import argparse
 
 
-load_dotenv()
-BITLY_ACCESS_TOKEN = os.getenv("BITLY_ACCESS_TOKEN")
-
-
 def shorten_link(token, link):
     """
     Method to reduce by specify URL.
@@ -50,14 +46,18 @@ def count_clicks(token, link):
 
 
 if __name__ == '__main__':
+    load_dotenv()
+    BITLY_ACCESS_TOKEN = os.getenv("BITLY_ACCESS_TOKEN")
+
     parser = argparse.ArgumentParser('Program description')
     parser.add_argument('specified_url', help='Link for reduce or get count clicks for "bit.ly"')
     args = parser.parse_args()
     specified_url = args.specified_url
+
     try:
         if specified_url.startswith('http://bit.ly/'):
             clicks_count = count_clicks(BITLY_ACCESS_TOKEN, specified_url[7:])
-            print('Click count: {0}'.format(clicks_count['total_clicks']))
+            print('Count clicks for "bit.ly" link: {0}'.format(clicks_count['total_clicks']))
         elif specified_url.startswith('bit.ly/'):
             clicks_count = count_clicks(BITLY_ACCESS_TOKEN, specified_url)
             print('Count clicks for "bit.ly" link: {0}'.format(clicks_count['total_clicks']))

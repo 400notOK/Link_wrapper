@@ -20,6 +20,19 @@ Python3 should be already installed. Then use pip (or pip3, if there is a confli
 ```buildoutcfg
 pip install -r requirements.txt
 ```
+### Example script start
+
+With a typical url:
+```buildoutcfg
+C:\Link_wrapper>python main.py ya.ru
+Your link: http://bit.ly/2ZXWj1B
+```
+
+With a bit.ly url:
+```buildoutcfg
+C:\Link_wrapper>python main.py http://bit.ly/2ZXWj1B
+Click count: 5
+```
 
 ### Project Goals
 The code is written for educational purposes on online-course for web-developers [dvmn.org](https://dvmn.org).
